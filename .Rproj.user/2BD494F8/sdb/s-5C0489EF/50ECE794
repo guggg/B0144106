@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"NBA 2014-2015球季 各隊分析\"\noutput: html_document\n---\n\n\n```{r echo=T}\n#install.packages(\"SportsAnalytics\")\nlibrary(SportsAnalytics)\nNBA1415<-fetch_NBAPlayerStatistics(\"14-15\")\n```\n## **各隊最辛苦的球員**\n\n---各隊上場分鐘數最多的球員---\n\n```{r echo=T}\nMaxPlayed<-aggregate(TotalMinutesPlayed~Team,NBA1415,max)\n#tapply(NBA1415$TotalPoints,NBA1415$Team,max)\nNBA1415MaxPlayed<-merge(NBA1415,MaxPlayed)\noutput<-NBA1415MaxPlayed[order(NBA1415MaxPlayed$TotalMinutesPlayed,decreasing = T),c(\"Team\",\"Name\",\"TotalMinutesPlayed\")]\nlibrary(knitr)\nkable(output, digits=2)\n```\n\n## **各隊得分王**\n\n---**各隊得分最多的球員**---\n\n```{r echo=T}\nMaxPoint<-aggregate(TotalPoints~Team,NBA1415,max)\n\nNBA1415MaxPoint<-merge(NBA1415,MaxPoint)\noutput<-NBA1415MaxPoint[order(NBA1415MaxPoint$TotalPoints,decreasing = T),c(\"Team\",\"Name\",\"TotalPoints\")]\nlibrary(knitr)\nkable(output, digits=2)\n```\n\n## **各隊最有效率球員**\n\n---**各隊總得分/出戰分鐘數 最高的球員**---\n\n```{r echo=T}\nEFFMax<-aggregate(TotalPoints/TotalMinutesPlayed~Name,NBA1415,max)\nNBA1415EFFMax<-merge(NBA1415,EFFMax)\nFinalEFFMax<-aggregate(TotalPoints/TotalMinutesPlayed~Team,NBA1415EFFMax,max)\nNBA1415FinalEFFMax<-merge(NBA1415EFFMax,FinalEFFMax)\noutput<-NBA1415FinalEFFMax[order(NBA1415FinalEFFMax$`TotalPoints/TotalMinutesPlayed`,decreasing = T),c(\"Team\",\"Name\",\"TotalPoints/TotalMinutesPlayed\")]\nlibrary(knitr)\nkable(output, digits=2)\n```\n\n\n##**各隊三分球出手最準的球員**\n\n---**各隊三分球命中/出手三分球 最高的球員**---\n\n```{r echo=T}\nShoter<-aggregate(ThreesMade/ThreesAttempted~Name,NBA1415,max)\nNBA1415Shoter<-merge(NBA1415,Shoter)\nFinalShoter<-aggregate(ThreesMade/ThreesAttempted~Team,NBA1415Shoter,max)\nNBA1415FinalShoter<-merge(NBA1415Shoter,FinalShoter)\noutput<-NBA1415FinalShoter[order(NBA1415FinalShoter$`ThreesMade/ThreesAttempted`,decreasing = T),c(\"Team\",\"Name\",\"ThreesMade/ThreesAttempted\")]\nlibrary(knitr)\nkable(output, digits=2)\n```\n",
+    "created" : 1457707530328.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3599729286",
+    "id" : "50ECE794",
+    "lastKnownWriteTime" : 1458656160,
+    "last_content_update" : 1458656160354,
+    "path" : "~/R/B0144106/KNIT.Rmd",
+    "project_path" : "KNIT.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

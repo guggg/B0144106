@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "if (!require('SportsAnalytics')){\n  install.packages(\"SportsAnalytics\")\n  library(SportsAnalytics)\n}\nNBA1415<-fetch_NBAPlayerStatistics(\"14-15\")\nNBA1415\napply(NBA1415,2,max)\n\nMaxEFF<-aggregate(NBA1415$TotalPoints/TotalMinutesPlayed~Team,NBA1415,max)\nEffectivePlayer<-tapply(NBA1415$Name,NBA1415$Team,max,NBA1415$TotalPoints/NBA1415$TotalMinutesPlayed)\n                      \nNBA1415MaxEFF<-merge(NBA1415,EffectivePlayer)\noutput<-NBA1415MaxEFF[order(NBA1415MaxEFF$TotalPoints/NBA1415MaxEFF$TotalMinutesPlayed,decreasing = T),c(\"Team\",\"Name\",\"TotalPoints\")]\nlibrary(knitr)\nkable(output, digits=2)\n",
+    "created" : 1458558722872.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4102980702",
+    "id" : "448BAC55",
+    "lastKnownWriteTime" : 1458656160,
+    "last_content_update" : 1458656160294,
+    "path" : "~/R/B0144106/nba inport.R",
+    "project_path" : "nba inport.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

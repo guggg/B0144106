@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1458655788100.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A9DE227C",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1458655788100,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "6pqy3w8287",
+        "caption" : "FinalShoter",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=FinalShoter&cache_key=6pqy3w8287",
+        "displayedObservations" : 30,
+        "environment" : "",
+        "object" : "FinalShoter",
+        "totalObservations" : 30,
+        "variables" : 2
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
